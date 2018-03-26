@@ -1,0 +1,117 @@
+@import '../../theme.less';
+#root{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.section{
+    flex: 1;
+    overflow-x: hidden;
+}
+
+footer{
+    height: 1.07rem;
+    display: flex !important;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    font-size: .26rem;
+    background: #fff;
+    a.Bott_active{
+        color: @theme;
+    }
+    a{
+        color: #000;
+        position: relative;
+        >i{
+            display: block;
+            font-size: .36rem !important;
+        }
+    }
+}
+
+a{
+    color: #333;
+}
+
+.tipNum{
+    width: .26rem;
+    height: .26rem;
+    border-radius: 50%;
+    background: @theme;
+    position: absolute;
+    right: .01rem;
+    top: 0;
+    color: #fff;
+    font-size: .2rem;
+}
+
+.register_tip{
+    text-align: center;
+    color: @theme;
+    font-size: .26rem;
+}
+
+.userInfoline{
+    background: #fff;
+    padding: .2rem .3rem 0;
+    display: flex;
+    align-items: center;
+    i{
+        font-size: .4rem;
+    }
+    input{
+        padding-left: .2rem;
+        line-height: .8rem;
+        border: none;
+        outline: none;
+        flex: 1;
+        font-size: .25rem;
+        border-bottom: .02rem solid #eee;
+    }
+}
+
+.fromBtn{
+    margin-top: .6rem;
+    text-align: center;
+    button{
+        width: 4rem;
+        height: 1rem;
+        outline: none;
+        border: none;
+        background: @theme;
+        border-radius: .4rem;
+        color: #fff;
+        font-size: .32rem;
+    }
+}
+
+.mt03 {
+    margin-top: .3rem;
+}
+.mt01 {
+    margin-top: .1rem;
+}
+
+.mt02 {
+    margin-top: .2rem;
+}
+
+.mt08 {
+    margin-top: .8rem;
+}
+
+.tc {
+    text-align: center;
+}
+
+.disF{
+    display: flex;
+}
+
+.aiT{
+    align-items: center;
+}

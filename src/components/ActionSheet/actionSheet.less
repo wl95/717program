@@ -1,0 +1,54 @@
+@import '../../theme.less';
+.maskLayer{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .4);
+    opacity: 0;
+    visibility: hidden;
+    transition: .2s;
+}
+
+.agreeNot{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: .2rem;
+    transform: translateY(110%);
+    transition: transform .3s;
+    .agree,.not{
+        width: 96%;
+        background: #fff;
+        margin: 0 auto;
+        line-height: 1rem;
+        text-align: center;
+        border-radius: .12rem;
+        font-size: .34rem;
+    }
+    .agree{
+        margin-bottom: .18rem;
+        color: #fc4141;
+        h6{
+            font-size: .28rem;
+            color: #aaa;
+            font-weight: normal;
+            border-bottom: .01rem solid #ddd;
+        }
+        span{
+            display: block;
+        }
+    }
+    .not{
+        color: #5da9ff;
+    }
+}
+
+.visiAgreeNot{
+    opacity: 1;
+    visibility: visible;
+    .agreeNot{
+        transform: translateY(0);
+    }
+}

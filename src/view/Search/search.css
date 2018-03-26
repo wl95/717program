@@ -1,0 +1,48 @@
+.search_main{
+    background: #fff;
+    height: calc(100% - 1rem);
+}
+.search_header{
+    display: flex;
+    justify-content: space-between;
+    padding: .2rem .2rem .2rem .3rem;
+    align-items: center;
+    background: #fff;
+}
+
+.searchTop{
+    flex:.9 !important;
+}
+
+.search_btn{
+    font-size: .3rem;
+}
+
+.search_main p{
+    display: flex;
+    justify-content: space-between;
+    line-height: .7rem;
+    padding: 0 .3rem;
+    font-size: .28rem;
+}
+
+.zanwu{
+    padding: .1rem 0 0 .32rem;
+    font-size: .23rem;
+    color: #aaa;
+}
+
+.historySearch{
+    padding: .1rem .3rem;
+    
+}
+
+.historySearch li{
+    padding: .12rem .26rem;;
+    float: left;
+    background: #eee;
+    border-radius: .05rem;
+    color: #aaa;
+    margin-left: .2rem;
+    margin-bottom: .1rem;
+}

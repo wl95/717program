@@ -1,0 +1,19 @@
+
+{
+    "presets": [
+        "env", "react", "stage-0"
+    ],
+    "plugins": [
+        ["import", {
+            "libraryName": "antd-mobile",
+            "style": true,
+        }],
+        ["transform-runtime", {
+            "helpers": false,
+            "polyfill": false,
+            "regenerator": true,
+            "moduleName": "babel-runtime"
+        }],
+        ["transform-object-rest-spread"],
+    ]
+}
