@@ -1,5 +1,15 @@
+/* 
+    弹框组建 功能 agreeNot弹窗开关 类型Boolean
+    agreeQuit 确定按钮回掉函数 类型func
+    onQuit 关闭按钮回掉函数 类型func
+    title 组件标题 类型string
+    agree 确定按钮内容
+    not  取消按钮内容 
+*/
 import React, { Component } from 'react'
 import './actionSheet.less'
+import PropTypes from 'prop-types'
+
 class ActionSheet extends Component{
     constructor() {
         super()
@@ -25,5 +35,15 @@ class ActionSheet extends Component{
         this.props.onQuit();
     }
 }
+
+ActionSheet.propTypes = {
+    agreeNot: PropTypes.bool,
+    agreeQuit: PropTypes.func,
+    onQuit: PropTypes.func,
+    title: PropTypes.string,
+    agree: PropTypes.string,
+    not: PropTypes.string,
+};
+
 
 export default ActionSheet;

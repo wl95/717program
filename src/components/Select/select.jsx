@@ -32,8 +32,11 @@ class Select extends Component {
         </select>
     }
     onGain(e) {
-       this.props.onChang && this.props.onChang(e.target.value);
-       this.props.onGiveGain && this.props.onGiveGain(e.target.value);
+        this.props.onChang && this.props.onChang(e.target.value);
+        console.log(
+        
+        )
+        this.props.onGiveGain && this.props.onGiveGain();
     }
 }
 

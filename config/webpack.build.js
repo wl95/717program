@@ -6,9 +6,13 @@ let DefinePlugin = webpack.DefinePlugin;
 baseConfig.plugins.push(new UglifyPlugin());
 
 baseConfig.plugins.push(new DefinePlugin({
-    "process.env":'"production"'
+    "process.env.NODE_ENV":'"production"'
 }));
 
 module.exports = {
     ...baseConfig,
+    externals: {
+        'react': "React",
+        'react-dom':"ReactDom"
+    }
 }

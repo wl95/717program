@@ -16,7 +16,8 @@ let initState = {
     user_info: '',
     province_list: [],
     municipality_list: [],
-    dstrict_list:[]
+    dstrict_list: [],
+    address:[]   // 收货地址
 }
 // 商品列表
 function cart_list(state = initState.cart_list, action) {
@@ -110,11 +111,22 @@ function dstrict_list(state = initState.dstrict_list, action) {
     return state;
 }
 
+// 获取收货地址
+
+function address_list(state = initState.address, action) {
+    if (action.type == 'SET_ADDADDRES_ADDRESS') {
+        console.log(action)
+        return action.data;
+    }
+    return state;
+}
+
 export default combineReducers({
     cart_list,
     tipNum,
     userInfo,
     province,
     municipality_list,
-    dstrict_list
+    dstrict_list,
+    address_list
 })

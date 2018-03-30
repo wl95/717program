@@ -22,10 +22,10 @@ router.post('/user/Cart/addCart', function (req, res) {
         message: '添加购物车有误',
         code:1
     }
-    let shoppingDir = JSON.parse(fs.readFileSync('./mock/shopping.json',{ encoding:'utf-8' }));
+    let shoppingDir = JSON.parse(fs.readFileSync('./mock/shopping.json', { encoding: 'utf-8' }))
     jwt.verify(token, 'wl', (err, decoded) => {
         if (err) {
-            message: '登录失败';
+            message: '登陆已过期';
             res.end(JSON.stringify(mation));
         } else {
 
@@ -62,7 +62,6 @@ router.post('/user/Cart/addCart', function (req, res) {
             });
         }
     })
-    
 })
 
 // 获取购物车商品
@@ -73,17 +72,21 @@ router.get('/mall/goods/recommendgoods', function (req, res) {
         code: 1,
         data:[]
     }
-    let shoppingDir = JSON.parse(fs.readFileSync('./mock/shopping.json', { encoding: 'utf-8' }));
-    
-    jwt.verify(token, 'wl', (err, decoded) => {
+    fs.readFile('./mock/shopping.json', { encoding: 'utf-8' }, (err, shoppingDir) => {
+        shoppingDir = JSON.parse(shoppingDir)
         if (err) {
             res.end(JSON.stringify(mation))
-        } else {
-            mation.data = shoppingDir[decoded.username];
-            mation.code = 0;
-            mation.message = '数据请求成功';
-            res.end(JSON.stringify(mation))
         }
+        jwt.verify(token, 'wl', (err, decoded) => {
+            if (err) {
+                res.end(JSON.stringify(mation))
+            } else {
+                mation.data = shoppingDir[decoded.username];
+                mation.code = 0;
+                mation.message = '数据请求成功';
+                res.end(JSON.stringify(mation))
+            }
+        })
     })
 })
 

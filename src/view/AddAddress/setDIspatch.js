@@ -18,6 +18,12 @@ export default function mapDispatchToProps(dispatch) {
                 district_id,
                 china:"district"
             })
+        },
+        addInfos(addInfos) {
+            dispatch({
+                type: 'WATCH_ADDADDRES_ADDINFO',
+                china:addInfos
+            })
         }
     }
 }

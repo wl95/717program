@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import Header from '../../components/Header'
 import Button from '../../components/Button'
+import mapStateToProps from './getState'
+import mapDispatchToProps from './setDispatch'
 
 class Address extends Component {
     render() {
+        console.log(this.props)
         return (
             <div>
                 <Header
@@ -12,7 +16,8 @@ class Address extends Component {
                     rightCont={<i className="iconfont icon-homeline"></i>}
                     leftHistory="/homepage/mine"
                     rightHistory="/homepage/home"
-                />    
+                />  
+                
                 <Button
                     Icon={<span className="iconfont icon-add1"></span>}    
                     buttonText="新增收货地址"
@@ -22,6 +27,9 @@ class Address extends Component {
             </div>
         )
     }
+    componentDidMount() {
+        this.props.getAddress();
+    }
 }
 
-export default Address;
+export default connect(mapStateToProps, mapDispatchToProps)(Address);

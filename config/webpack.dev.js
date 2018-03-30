@@ -3,7 +3,7 @@ let webpack = require('webpack');
 let DefinePlugin = webpack.DefinePlugin;
 
 baseConfig.plugins.push(new DefinePlugin({
-    "process.env": '"development"'
+    "process.env.NODE_ENV": '"development"'
 }));
 module.exports = {
     ...baseConfig,

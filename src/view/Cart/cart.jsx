@@ -14,7 +14,7 @@ function showToast(showToastMsg) {
 function loadingToast() {
     Toast.loading('Loading...', 0, () => {
       console.log('Load complete !!!');
-    });
+    },true);
 }
 
 class Cart extends Component {
@@ -40,6 +40,7 @@ class Cart extends Component {
         let EditorFinish = this.state.EditorFinish ? this.state.Finish :this.state.Editor
         return (
             <Fragment>
+                <WhiteSpace />    
                 <header className="headerCart">
                     {
                         cartList.length ? <span onClick={this.ShoppingCartEditor}>{EditorFinish.editor}</span> : ''
@@ -66,9 +67,7 @@ class Cart extends Component {
                         <div className="check_all"><span className={"choice iconfont icon-check " + (isCheckAll ? "choice_checked" : '')} onClick={() => { this.onCheckAll(isCheckAll) }}></span>全选</div>
                             <div className="clac">
                             <div className="total">合计:<span>¥{this.props.total}</span></div>
-                                <WhiteSpace />
-                                    <div className="account" onClick={() =>this.onEditor(this.state.EditorFinish)}>{EditorFinish.account}</div>
-                                <WhiteSpace />
+                                <div className="account" onClick={() =>this.onEditor(this.state.EditorFinish)}>{EditorFinish.account}</div>
                             </div>
                         </div>
                 }
@@ -77,7 +76,10 @@ class Cart extends Component {
         )
     }
     componentDidMount() {
-        this.props.getCartLists();
+        this.props.getCartLists(() => {
+            Toast.hide();
+        });
+        loadingToast();
     }
     // 全选
     onCheckAll(isCheckAll) {
@@ -89,19 +91,20 @@ class Cart extends Component {
             EditorFinish: !this.state.EditorFinish
         })
     }
-    componentWillUpdate() {
-        console.log('componentWillUpdate')
-    }
     // 结算与提交
     onEditor(EditorFinish) {
         if (EditorFinish) {
+            loadingToast();
             let EditorGoodId = [];
             this.props.cartList.forEach(value => {
                 if (value.choiceChecked) {
                     EditorGoodId.push(value.goods_id);
                 }
             })
-            this.props.onEditor(EditorGoodId);
+            this.props.onEditor(EditorGoodId, () => {
+                console.log(1)
+                Toast.hide();
+            });
             showToast("宝贝删除成功");
         } else {
             showToast("正在跳转支付");

@@ -9,16 +9,17 @@ export default function mapDispatchToProps(dispatch) {
                 isCheckAll
             })
         },
-        onEditor(EditorGoodId) {
+        onEditor(EditorGoodId,callback) {
             // 删除商品
             $http.post("/commodity/mall/goods/removeCart",{EditorGoodId,token: Cookies.get('userInfo') || ''}).then(result => {
                 dispatch({
                     type: REMOVE_CART,
                     cartList:result.data
                 })
+                callback();
             })
         },
-        getCartLists() {
+        getCartLists(callback) {
             $http.get('/commodity/mall/goods/recommendgoods',{token: Cookies.get('userInfo') || ''}).then(result => {
                 if (result.data && !result.code) {
                     dispatch({
@@ -26,6 +27,7 @@ export default function mapDispatchToProps(dispatch) {
                         cartList:result.data
                     })
                 }
+                callback();
             })
         }
     }

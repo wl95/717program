@@ -2,7 +2,7 @@
 *  @Author: mikey.wangliang 
 *  @Date: 2018-03-23 16:34:55 
  * @Last Modified by: mikey.wangliang
- * @Last Modified time: 2018-03-26 14:41:20
+ * @Last Modified time: 2018-03-30 10:56:49
 * /
 
 > React 717项目 该项目同时会对一些知识点进行实践。
@@ -12,7 +12,7 @@
 # install dependencies
 yarn install
 
-# serve with hot reload at localhost:8080
+# serve with hot reload at localhost:3000
 npm run dev
 
 # build for production with minification
@@ -29,7 +29,7 @@ npm run build
 - [x] JS：ES6、ES7
 - [x] 样式：less
 - [x] 状态管理：redux
-- [x] Ajax：Fetch
+- [x] Ajax：Fetch请求与获取数据
 
 ### Features
 *  主页模块
@@ -52,10 +52,10 @@ npm run build
 * 登录注册模块
     * 与node中的express相结合来处里用户的注册与登录
 * 收货地址
-    * 实现新增收货地址实时获取当前用户的收货地址  // 效果正在开发中
-    * 设置默认地址                             // 效果正在开发中
+    * 实现新增收货地址实时获取当前用户的收货地址  
+    * 设置默认地址                             
     * 省市县三级联动
-    * 编辑收货地址以及删除收货地址               // 效果正在开发中 
+    * 编辑收货地址以及删除收货地址               
 
 ### Project Structure
 
@@ -92,12 +92,13 @@ npm run build
 │   │   ├── Input              Input组件
 │   │   ├── ProductList        首页商品列表组件
 │   │   ├── Radio              单选按钮组件
+│   │   ├── Router             路由组件管理
 │   │   ├── Select             select组件
 │   │   ├── Swiper             轮播图组件
 │   │   └── index.js           export导出所有组件   // 具体导出请以实际项目为主
 │   ├── css                    全局样式
 │   ├── images                 图片
-│   ├── router                 路由配置
+│   ├── router                 路由配置             //实现react路由管理 
 │   ├── store                  redeux配置文件       // redux-devTools 遇到报错暂未实现
 │   ├── utils                  工具类       
 │   │   ├── homeSwiperImg.js   swiper工具

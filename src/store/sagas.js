@@ -6,7 +6,6 @@ import $http from '../utils/http'
 function* fetchProvince() {
     try {
         let res = yield call($http.post, '/city/user/districts/index');
-
         yield put({
             type: GET_ADDADDRES_INDEX,
             data:JSON.parse(res).data
@@ -38,7 +37,6 @@ function* fetchMunicipality(mcdistrict) {
                     data:res.data
                 })
             }
-            
         } else {
             yield put({
                 type: GET_ADDADDRES_CHILDREN,
@@ -57,6 +55,46 @@ function* watchMunicipality() {
     yield takeLatest('WATCH_ADDADDRES_CHILDREN', fetchMunicipality);
 }
 
+// 储存
+function* fetchAddInfo(addInfo) {
+    try {
+        let res = yield call($http.post, '/city/reserve/shipping/address', addInfo.china);
+        console.log(res)
+        yield put({
+            type: 'SET_ADDADDRES_ADDINFO',
+            data:res
+        })
+    } catch (err) {
+        yield put({
+            type: 'SET_ADDADDRES_ADDINFO',
+            data:err
+        })
+    }
+}
+
+function*  watchAddInfo() {
+    yield takeLatest('WATCH_ADDADDRES_ADDINFO',fetchAddInfo);
+}
+// 获取用户收货地址
+function* fetchAddress(userInfo) {
+    try {
+        let res = yield call($http.post, '/city/reserve/shipping/gainAddress', { token: userInfo.token });
+        yield put({
+            type: 'SET_ADDADDRES_ADDRESS',
+            data:res
+        })
+    } catch (err) {
+        yield put({
+            type: 'SET_ADDADDRES_ADDRESS',
+            data:err
+        })
+    }
+}
+
+function* watchAddress() {
+    yield takeLatest('WATCH_ADDADDRES_ADDRESS',fetchAddress);
+}
+
 export default function* rootSaga() {
-    yield [watchProvince(),watchMunicipality()]
+    yield [watchProvince(),watchMunicipality(),watchAddInfo(),watchAddress()]
 }
